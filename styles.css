@@ -21,7 +21,7 @@ header {
 
 /* Navigation links */
 nav a {
-    color: white;
+    color: purple;
     text-decoration: none;
     margin: 15px;
 }
@@ -61,4 +61,32 @@ button {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+/* Navigation layout using Flexbox */
+nav{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+/* Homepage two-column layout */
+.home-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: centre;
+}
+/* Make banner image responsive */
+.home-grid img{
+    width: 100%;
+    height: auto;
+}
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+    .home-grid{
+        grid-template-columns: 1fr;
+    }
+    nav {
+        flex-wrap: wrap;
+    }
 }
