@@ -25,26 +25,84 @@ if (registrationForm) {
         }
     });
 }
-const students = ["Daizy","Arnold","Brenda","Frank","Joe"];
-function addStudentToPage(name) {
+const students = [
+    {
+    name:"Daizy",
+    course:"DS",
+    year:2
+    },
+    {
+    name:"Arnold",
+    course:"CS",
+    year:2
+    },
+    {
+    name:"Brenda",
+    course:"DS",
+    year:3
+    },
+    {
+    name:"Frank",
+    course:"CS",
+    year:2
+    },
+    {
+    name:"Joe",
+    course:"DS",
+    year:1
+    }
+];
+function addStudentToPage(student) {
     const studentList = document.getElementById("student-list");
-
     const listItem = document.createElement("li");
 
-    listItem.textContent = name;
+    listItem.textContent =
+        `${student.name} - ${student.course} - Year ${student.year}`;
 
     studentList.appendChild(listItem);
 }
 function displayAllStudents(students) {
     const studentList = document.getElementById("student-list");
-
     studentList.innerHTML = "";
+
+    const studentCount = document.getElementById("student-count");
+
+    if (studentCount) {
+        studentCount.textContent = `Registered Students: ${students.length}`;
+    }
 
     for (let i = 0; i < students.length; i++) {
         addStudentToPage(students[i]);
     }
 }
 const showStudentsButton = document.getElementById("showStudents");
+
+if (showStudentsButton) {
+    showStudentsButton.addEventListener("click", function() {
+
+        fetch("students.json")
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Could not load student data.");
+                }
+                return response.json();
+            })
+            .then(data => {
+                displayAllStudents(data);
+            })
+            .catch(error => {
+                console.error("Error:", error);
+
+                const studentList = document.getElementById("student-list");
+
+                if (studentList) {
+                    studentList.textContent =
+                        "Unable to load student data. Please try again.";
+                }
+            });
+
+    });
+}
 
 if (showStudentsButton) {
     showStudentsButton.addEventListener("click", function() {
