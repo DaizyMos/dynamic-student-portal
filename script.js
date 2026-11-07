@@ -12,6 +12,29 @@ for (let i=1; i<=5; i++) {
     console.log(i);
 }
 const registrationForm = document.getElementById("registrationForm");
+
+if (registrationForm) {
+    registrationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const nameInput = document.getElementById("fullName");
+        const emailInput = document.getElementById("email");
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+
+        if (!namePattern.test(name)) {
+            alert("Please enter a valid name using letters and spaces only.");
+        }
+        else if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+        }
+        else {
+            alert("Registration details are valid!");
+        }
+    });
+}
+
 if (registrationForm) {
     registrationForm.addEventListener("submit", function(event) {
         event.preventDefault();
@@ -25,6 +48,7 @@ if (registrationForm) {
         }
     });
 }
+
 const students = [
     {
     name:"Daizy",
@@ -54,10 +78,13 @@ const students = [
 ];
 function addStudentToPage(student) {
     const studentList = document.getElementById("student-list");
+    if (!studentList) {
+        return;
+    }
     const listItem = document.createElement("li");
 
     listItem.textContent =
-        `${student.name} - ${student.course} - Year ${student.year}`;
+        student.getSummary();
 
     studentList.appendChild(listItem);
 }
@@ -75,8 +102,6 @@ function displayAllStudents(students) {
         addStudentToPage(students[i]);
     }
 }
-const showStudentsButton = document.getElementById("showStudents");
-
 if (showStudentsButton) {
     showStudentsButton.addEventListener("click", function() {
 
@@ -88,7 +113,15 @@ if (showStudentsButton) {
                 return response.json();
             })
             .then(data => {
-                displayAllStudents(data);
+    const studentObjects = data.map(item => {
+         return new Student(
+            item.name,
+            item.email,
+            item.course
+        );
+    });
+
+    displayAllStudents(studentObjects);
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -100,12 +133,23 @@ if (showStudentsButton) {
                         "Unable to load student data. Please try again.";
                 }
             });
-
     });
 }
-
 if (showStudentsButton) {
     showStudentsButton.addEventListener("click", function() {
         displayAllStudents(students);
     });
 }
+class Student {
+    constructor(name, email, course) {
+        this.name = name;
+        this.email = email;
+        this.course = course;
+    }
+
+    getSummary() {
+        return `${this.name} - ${this.email} - ${this.course}`;
+    }
+}
+const namePattern = /^[A-Za-z ]+$/;
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

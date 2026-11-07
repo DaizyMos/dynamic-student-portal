@@ -1,7 +1,7 @@
 [
-    { "name": "Alex", "course": "IT", "year": 2 },
-    { "name": "Mary", "course": "Computer Science", "year": 1 },
-    { "name": "John", "course": "BBIT", "year": 3 },
-    { "name": "Grace", "course": "IT", "year": 2 },
-    { "name": "Peter", "course": "Computer Science", "year": 1 }
+    { "name": "Daizy", "email":"dmoseti@kabarak.ac.ke", "course": "DS", "year": 2 },
+    { "name": "Arnold", "email":"amomanyi@kabarak.ac.ke", "course": "CS", "year": 2 },
+    { "name": "Brenda", "email":"wangechi@kabarak.ac.ke","course": "DS", "year": 3 },
+    { "name": "Frank", "email":"frank@kabarak.ac.ke", "course": "CS", "year": 2 },
+    { "name": "Joe", "email":"joeboray@kabarak.ac.ke", "course": "DS", "year": 1 }
 ]
