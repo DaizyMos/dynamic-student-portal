@@ -25,3 +25,29 @@ if (registrationForm) {
         }
     });
 }
+const students = ["Daizy","Arnold","Brenda","Frank","Joe"];
+function addStudentToPage(name) {
+    const studentList = document.getElementById("student-list");
+
+    const listItem = document.createElement("li");
+
+    listItem.textContent = name;
+
+    studentList.appendChild(listItem);
+}
+function displayAllStudents(students) {
+    const studentList = document.getElementById("student-list");
+
+    studentList.innerHTML = "";
+
+    for (let i = 0; i < students.length; i++) {
+        addStudentToPage(students[i]);
+    }
+}
+const showStudentsButton = document.getElementById("showStudents");
+
+if (showStudentsButton) {
+    showStudentsButton.addEventListener("click", function() {
+        displayAllStudents(students);
+    });
+}
