@@ -1,0 +1,64 @@
+/* General page styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f6fc;
+    margin: 0;
+    padding: 0;
+}
+
+/* Heading styling */
+h1, h2, h3 {
+    color: #1a237e;
+}
+
+/* Header styling */
+header {
+    background-color: #1a237e;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation links */
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+/* Main content */
+main {
+    padding: 20px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #1a237e;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+/* Registration form styling */
+form {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+/* Form input fields */
+input, select {
+    padding: 10px;
+    margin: 8px 0;
+}
+
+/* Register button */
+button {
+    background-color: #00897b;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
