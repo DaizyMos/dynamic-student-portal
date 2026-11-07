@@ -17,6 +17,45 @@ if (registrationForm) {
     registrationForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
+        const name = document.getElementById("fullName").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const dob = document.getElementById("dob").value;
+        const course = document.getElementById("course").value;
+        const gender = document.querySelector(
+            'input[name="gender"]:checked'
+        );
+        const terms = document.querySelector(
+            'input[name="terms"]'
+        ).checked;
+
+        if (!namePattern.test(name)) {
+            alert("Please enter a valid name using letters and spaces only.");
+        }
+        else if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+        }
+        else if (!dob) {
+            alert("Please select your date of birth.");
+        }
+        else if (!course) {
+            alert("Please select your course.");
+        }
+        else if (!gender) {
+            alert("Please select your gender.");
+        }
+        else if (!terms) {
+            alert("Please agree to the terms and conditions.");
+        }
+        else {
+            alert("Registration details are valid!");
+        }
+    });
+}
+
+if (registrationForm) {
+    registrationForm.addEventListener("submit", function(event) {
+        event.preventDefault();
+
         const nameInput = document.getElementById("fullName");
         const emailInput = document.getElementById("email");
 
@@ -102,6 +141,7 @@ function displayAllStudents(students) {
         addStudentToPage(students[i]);
     }
 }
+const showStudentsButton=document.getElementById("showStudents");
 if (showStudentsButton) {
     showStudentsButton.addEventListener("click", function() {
 
